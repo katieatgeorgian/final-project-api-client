@@ -1,0 +1,17 @@
+div.dropdown {
+  text-align: right;
+  padding-right: 5rem;
+}
+
+select {
+  background-color: white;
+  color: #560829;
+  border: 1px solid #560829;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+}
+
+select option:hover {
+  background-color: white;
+  color: #560829;
+}

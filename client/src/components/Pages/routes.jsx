@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Home from './Home';
-import Gallery from './Gallery';
+import Category from '../shared/CategorySort';
 import About from './About';
 import Contact from './Contact';
 
@@ -14,7 +14,7 @@ const Routes = () => {
       </Switch>
 
       <Switch>
-        <Route exact path="/gallery" component={Gallery}/>
+        <Route exact path="/gallery" component={Category}/>
       </Switch>
 
       <Switch>

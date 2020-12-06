@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { UserContext } from '../../UserProvider';
 import { NotificationContext } from '../../../shared/Notifications';
 import { GlobalStoreContext } from '../../../shared/Globals';
 import Axios from 'axios';
+
+import Button from '../../../shared/Button';
 
 const LoginForm = () => {
   const { setUser } = useContext(UserContext);
@@ -77,7 +79,7 @@ const LoginForm = () => {
       </Form.Group>
 
       <Form.Group>
-        <Button type="submit">Login</Button>
+        <Button href="#" label="Login" type="submit" className="btn pl-3 pr-3"/>
       </Form.Group>
     </Form>
   );

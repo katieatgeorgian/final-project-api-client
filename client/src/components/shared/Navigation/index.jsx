@@ -26,7 +26,7 @@ const Navigation = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar expand="lg">
       
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Navbar.Collapse id="basic-navbar-nav">
