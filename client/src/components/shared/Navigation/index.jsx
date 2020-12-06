@@ -3,6 +3,9 @@ import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../Authentication/UserProvider';
 
+import Logo from '../Logo';
+import Styles from './styles';
+
 const NavLink = (props) => {
   // This function allows us to use React Router
   // with React Bootstrap. Booooya
@@ -24,10 +27,11 @@ const Navigation = () => {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand>MOFO Gaming</Navbar.Brand>
+      
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+        <Styles.Nav className="mr-auto">
+        <Navbar.Brand><Logo /></Navbar.Brand>
           <Link to="/" component={NavLink}>Home</Link>
 
           {user && user.token ? (
@@ -43,7 +47,11 @@ const Navigation = () => {
               <Link to="/register" component={NavLink}>Register</Link>
             </>
           )}
-        </Nav>
+
+          <Link to="/gallery" component={NavLink}>Gallery</Link>
+          <Link to="/about" component={NavLink}>About</Link>
+          <Link to="/contact" component={NavLink}>Contact Us</Link>
+        </Styles.Nav>
       </Navbar.Collapse>
     </Navbar>
   );

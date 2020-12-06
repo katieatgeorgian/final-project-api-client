@@ -1,6 +1,9 @@
 import React, { createContext, useState } from 'react';
 import { Alert } from 'react-bootstrap';
 
+import Styles from './styles';
+
+
 export const NotificationContext = createContext();
 
 const NotificationProvider = ({children}) => {
@@ -8,13 +11,14 @@ const NotificationProvider = ({children}) => {
 
   return (
     <NotificationContext.Provider value={{ notification, setNotification }}>
-      {notification ? (
-        <Alert variant={notification.type}>
-          {notification.message}
-        </Alert>
-      ) : null}
-
-      {children}
+      <Styles.NotificationDiv>
+        {notification ? (
+          <Alert variant={notification.type}>
+            {notification.message}
+          </Alert>
+        ) : null}
+      </Styles.NotificationDiv>
+        {children}
     </NotificationContext.Provider>
   );
 };
