@@ -34,3 +34,53 @@ exports.index = async (req, res, next) => {
     next(error);
   }
 };
+
+//show one specific piece
+exports.show = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const gallery = await Gallery.findById(id);
+    res.status(200).json(gallery);
+  } catch (error) {
+    next(error);
+  }
+};
+
+//update 
+exports.update = async (req, res, next) => {
+  try {
+    const { 
+      _id,
+      artist,
+      category,
+      title,
+      email
+     } = req.body;
+
+     //
+    const gallery = await Gallery.findOneAndUpdate({_id: _id}, 
+      {
+       artist,
+       category,
+       title,
+       email
+      });
+
+    res.status(200).json(gallery);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
+
+//delete
+exports.destroy = async (req, res, next) => {
+  try {
+    const { id } = req.body;
+    const gallery = await Gallery.findOneAndDelete({ id });
+    res.status(200).json(gallery);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};

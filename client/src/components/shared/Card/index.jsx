@@ -7,12 +7,10 @@ const GalleryCard = ({title, img, i, artist, category, email}) => {
   const [open, setOpen] = useState(false);
   
   const handleClose = () => {
-    console.log('closing');
     setOpen(false);
   }
 
   const handleShow = (e) => {
-    console.log('open says me');
     const idx = e.target.attributes.getNamedItem('data-tag').value;;
       setOpen(true);
   }
