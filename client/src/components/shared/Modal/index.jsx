@@ -1,6 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
 
-const GalleryModal = ({close, show, artist, title, category, email, image}) => {
+const GalleryModal = ({close, show, artist, title, category, email, imageUrl}) => {
 
   return (
     <Modal show={show}
@@ -15,7 +15,7 @@ const GalleryModal = ({close, show, artist, title, category, email, image}) => {
       <Modal.Body>
         <div className="row">
           <div className="col-8 pr-1">
-            <img src={image} style={{width:"100%"}} /> 
+            <img src={imageUrl} style={{width:"100%"}} /> 
           </div>
 
           <div className="col-3 pl-3">

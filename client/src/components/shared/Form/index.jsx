@@ -8,7 +8,7 @@ const FormField = () => {
   return (
 <Form>
   <Form.Group>
-    <Form.Label>Name</Form.Label>
+    <Form.Label>Artist's Name</Form.Label>
     <Form.Control type="text" placeholder="Enter Name" />
   </Form.Group>
 

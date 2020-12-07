@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export default {
   ContactDiv: styled.div`
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     margin: 0 auto;
+    
   `,
 
   ContactOverlay: styled.div`
@@ -15,9 +16,10 @@ export default {
     height: 60%;
     padding: 5rem;
     text-align: center;
+    width: 150%
 
     a {
-        color: #560829;
+        color: #560829 !important;
         text-decoration: none;
         padding: 1em;
         

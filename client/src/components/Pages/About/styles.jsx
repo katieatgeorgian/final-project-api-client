@@ -12,7 +12,7 @@ export default {
     color: #063b42;
     margin-left: 13vw;
     margin-top: 10%;
-    height: 50%;
+    height: 60%;
     padding: 5rem;
     text-align: center;
   `

@@ -21,6 +21,7 @@ const CategorySort = () => {
         <option value="photography">Photography</option>
         <option value="pottery">Pottery</option> 
         <option value="painting">Painting</option>
+        <option value="other">Other</option>
       </select> 
     </div>
     <Gallery cat={category}/>

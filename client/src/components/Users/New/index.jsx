@@ -1,31 +1,29 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 
 import Header from '../../shared/Header';
+import Footer from '../../shared/Footer';
 import UserForm from '../UserForm';
+
+import Layout from '../../shared/Layout';
+import Styles from './styles';
 
 const New = () => {
   return (
     <>
-      <Header title="Your title for the Header component block">
-        <p>
-          This paragraph will be the value for <strong>&#123;children&#125;</strong> in the <strong>Header component</strong>.
-        </p>
-
-        <p>
-          The header is editable under <strong>/src/components/Users/New/index.jsx</strong>
-        </p>
-      </Header>
-      
-      <Container>
-        <p>
-          The content is editable under <strong>/src/components/Users/New/index.jsx</strong>
-        </p>
-
-        <UserForm endpoint="users"/>
-      </Container>
+      <Layout>
+        <Styles.RegisterDiv>
+          <Header title="Register">
+          </Header>
+          <UserForm endpoint="users"/>
+        </Styles.RegisterDiv>
+      </Layout>
+      <Footer />
     </>
   );
 }
  
 export default New;
+
+
+        
+      

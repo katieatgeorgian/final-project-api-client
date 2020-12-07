@@ -8,6 +8,7 @@ exports.create = async (req, res, next) => {
       artist,
       category,
       title,
+      imageUrl,
       email
     } = req.body;
     //creating data - same data as in model - one to one
@@ -15,6 +16,7 @@ exports.create = async (req, res, next) => {
       artist,
       category,
       title,
+      imageUrl,
       email
     });
 
@@ -54,6 +56,7 @@ exports.update = async (req, res, next) => {
       artist,
       category,
       title,
+      imageUrl,
       email
      } = req.body;
 
@@ -63,6 +66,7 @@ exports.update = async (req, res, next) => {
        artist,
        category,
        title,
+       imageUrl,
        email
       });
 

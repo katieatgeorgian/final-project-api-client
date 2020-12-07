@@ -7,6 +7,8 @@ import { GlobalStoreContext } from '../../shared/Globals';
 import { NotificationContext } from '../../shared/Notifications';
 import { Redirect } from 'react-router-dom';
 
+import './styles.css';
+
 const UserForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
   const { globalStore } = useContext(GlobalStoreContext);    
   const { user, setUser } = useContext(UserContext);
@@ -60,9 +62,6 @@ const UserForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
       <Redirect to="/Home"/>
     ) : (
       <Form onSubmit={handleSubmit}>
-        <p>
-          The content is editable under <strong>/src/components/Users/UserForm/index.jsx</strong>
-        </p>
 
         <Form.Group>
           <Form.Label>Name</Form.Label>

@@ -5,6 +5,8 @@ import { NotificationContext } from '../../../shared/Notifications';
 import { GlobalStoreContext } from '../../../shared/Globals';
 import Axios from 'axios';
 
+import './styles.css';
+
 const LoginForm = () => {
   const { setUser } = useContext(UserContext);
   const { setNotification } = useContext(NotificationContext);
@@ -55,10 +57,6 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <p>
-        The form is editable under <strong>/src/components/Authentication/Login/LoginForm/index.jsx</strong>
-      </p>
-
       <Form.Group>
         <Form.Label>Email</Form.Label>
         <Form.Control
