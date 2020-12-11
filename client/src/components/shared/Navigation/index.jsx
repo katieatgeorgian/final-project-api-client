@@ -33,9 +33,11 @@ const Navigation = () => {
         <Styles.Nav className="mr-auto">
         <Navbar.Brand><Logo /></Navbar.Brand>
           <Link to="/" component={NavLink}>Home</Link>
-
+          <Link to="/gallery" component={NavLink}>Gallery</Link>
+          
           {user && user.token ? (
             <>
+              <Link to="/gallery/new" component={NavLink}>Add to Gallery</Link>
               <Link to="/users" component={NavLink}>Users</Link>
               <Link to="/profile" component={NavLink}>Profile</Link>
               <Link to="/profile/edit" component={NavLink}>Edit Profile</Link>
@@ -48,7 +50,7 @@ const Navigation = () => {
             </>
           )}
 
-          <Link to="/gallery" component={NavLink}>Gallery</Link>
+          
           <Link to="/about" component={NavLink}>About</Link>
           <Link to="/contact" component={NavLink}>Contact Us</Link>
         </Styles.Nav>

@@ -1,18 +1,15 @@
 import React, { Fragment, useEffect, useContext, useState } from 'react';
 import Axios from 'axios';
-import { GlobalStoreContext } from '../../shared/Globals';
-import { NotificationContext } from '../../shared/Notifications';
+import { GlobalStoreContext } from '../shared/Globals';
+import { NotificationContext } from '../shared/Notifications';
 
-import Footer from '../../shared/Footer';
 import Styles from './styles';
 
-import GalleryCard from '../../shared/Card';
+import GalleryCard from '../shared/Card';
 
 // let data = require('../../../dummyData.json');
 // console.log(data);
 // console.log(typeof data);
-
-
 
 const Gallery = (cat) => {
 
@@ -23,12 +20,11 @@ const Gallery = (cat) => {
     catAll = false;
   }
   const { globalStore } = useContext(GlobalStoreContext);
- 
   const [artPieces, setArtPieces] = useState([]);
   const { setNotification } = useContext(NotificationContext);
 
   useEffect(() => {
-    console.log(globalStore.REACT_APP_ENDPOINT);
+    
     Axios.get(`${globalStore.REACT_APP_ENDPOINT}/gallery`)
     .then(({ data }) => setArtPieces(data))
     .catch(error => {
@@ -72,7 +68,6 @@ const Gallery = (cat) => {
         }
         </div>
       </Styles.GalleryDiv>
-      <Footer />
     </>
   );
 }

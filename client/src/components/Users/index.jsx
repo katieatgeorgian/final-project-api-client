@@ -5,6 +5,8 @@ import { NotificationContext } from '../shared/Notifications';
 import { Container, Table } from 'react-bootstrap';
 import Header from '../shared/Header';
 
+import Layout from "../shared/Layout";
+
 const Users = () => {
   const { globalStore } = useContext(GlobalStoreContext);
   const [users, setUsers] = useState([]);
@@ -21,22 +23,14 @@ const Users = () => {
         message: "Couldn't access the users at this time."
       });
     });
-  }, []);
+  }, [globalStore, setNotification]);
 
   return (
     users ? (
       <>
-        <Header title="Your title for the Header component block">
-          <p>
-            This paragraph will be the value for <strong>&#123;children&#125;</strong> in the <strong>Header component</strong>.
-          </p>
-
-          <p>
-            The header is editable under <strong>/src/components/Users/index.jsx</strong>
-          </p>
+        <Header title="Users">
         </Header>
-
-        <Container className="my-3">
+        <Layout className="mt-3">
           <Table>
             <thead>
               <tr>
@@ -54,7 +48,7 @@ const Users = () => {
               ))}
             </tbody>
           </Table>
-        </Container>
+        </Layout>
       </>
     ) : null
   );

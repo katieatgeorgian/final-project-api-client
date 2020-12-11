@@ -1,0 +1,30 @@
+.view {
+  background-color: #560829 !important;
+  color: white;
+}
+
+.view:hover {
+  background-color: #420720 !important;
+  color: white;
+}
+
+.edit {
+  background-color: #063b42 !important;
+  color: white;
+  width: 100%;
+}
+
+.edit:hover {
+  background-color: #052b30 !important;
+  color: white;
+}
+
+.delete {
+  background-color: #e21b3c !important;
+  color: white;
+}
+
+.delete:hover {
+  background-color: #cc1937 !important;
+  color: white;
+}

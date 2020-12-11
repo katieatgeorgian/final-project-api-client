@@ -3,15 +3,16 @@ import React, { useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { UserContext } from '../../Authentication/UserProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
-import { NotificationContext } from '../../shared/Notifications';
 import { Container, Media } from 'react-bootstrap';
 import Header from '../../shared/Header';
 import { Link } from 'react-router-dom';
 
+import Layout from "../../shared/Layout";
+
 const Show = () => {
   const { user } = useContext(UserContext);
   const { globalStore } = useContext(GlobalStoreContext);
-  const { setNotification } = useContext(NotificationContext);
+
   const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
@@ -23,22 +24,11 @@ const Show = () => {
 
   return (
     userDetails ? (
-      <>
-        <Header title="Your title for the Header component block">
-          <p>
-            This paragraph will be the value for <strong>&#123;children&#125;</strong> in the <strong>Header component</strong>.
-          </p>
-
-          <p>
-            The header is editable under <strong>/src/components/Users/Show/index.jsx</strong>
-          </p>
+      <div style={{marginLeft: "13rem"}}>
+        <Header title="Profile">
         </Header>
 
-        <Container>
-          <p>
-            The content is editable under <strong>/src/components/Users/Show/index.jsx</strong>
-          </p>
-
+        <Layout className="mt-3">
           <Media>
             <img
               src="https://via.placeholder.com/150"
@@ -61,8 +51,8 @@ const Show = () => {
               </p>
             </Media.Body>
           </Media>
-        </Container>
-      </>
+        </Layout>
+      </div>
     ) : null
   );
 }

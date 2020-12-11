@@ -6,6 +6,8 @@ import { Container } from 'react-bootstrap';
 import Header from '../../shared/Header';
 import UserForm from '../UserForm';
 
+import Layout from '../../shared/Layout';
+
 const Edit = () => {
   const { user } = useContext(UserContext);
   const [userDetails, setUserDetails] = useState(null);
@@ -22,17 +24,14 @@ const Edit = () => {
       <>
         <Header title="Edit your profile!"/>
         
-        <Container>
-          <p>
-            The content is editable under <strong>/src/components/Users/Edit/index.jsx</strong>
-          </p>
+        <Layout className="mt-3">
 
           <UserForm
             preloadData={ userDetails }
             endpoint="/users/update"
             buttonLabel="Update"
           />
-        </Container>
+        </Layout>
       </>
     ) : null
   );

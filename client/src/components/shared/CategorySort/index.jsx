@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 // import { Dropdown } from "react-bootstrap";
 
 import './styles.css';
-import Gallery from '../../Pages/Gallery';
+import Gallery from '../../Gallery';
+import { Link } from 'react-router-dom';
+import Footer from '../../shared/Footer';
 
 const CategorySort = () => {
   const [category, setCategory] = useState(null);
@@ -15,16 +17,20 @@ const CategorySort = () => {
 
   return (
     <>
-    <div className="dropdown">
-      <select id="category" onChange={handleChange}>
-        <option value="null">Category</option>
-        <option value="photography">Photography</option>
-        <option value="pottery">Pottery</option> 
-        <option value="painting">Painting</option>
-        <option value="other">Other</option>
-      </select> 
-    </div>
-    <Gallery cat={category}/>
+      <div className="dropdown">
+        <select id="category" onChange={handleChange}>
+          <option value="null">Category</option>
+          <option value="photography">Photography</option>
+          <option value="pottery">Pottery</option> 
+          <option value="painting">Painting</option>
+          <option value="other">Other</option>
+        </select> 
+      </div>
+      <Gallery cat={category}/>
+      <p style={{textAlign: "right", marginTop: "3rem", marginRight: "13rem"}}>
+        <Link to="/gallery/new">Create a Listing!</Link>
+      </p>
+      <Footer />
     </>
   );
 }
