@@ -3,7 +3,7 @@ import './styles.css';
 
 import ModalGallery from '../Modal';
 
-const GalleryCard = ({title, imageUrl, i, artist, category, email}) => {
+const GalleryCard = ({title, imageUrl, i, artist, category, email, id}) => {
   const [open, setOpen] = useState(false);
   
   const handleClose = () => {
@@ -17,7 +17,7 @@ const GalleryCard = ({title, imageUrl, i, artist, category, email}) => {
   return (
     <>
     {open && 
-      <ModalGallery show={open} artist={artist} title={title} email={email} category={category} imageUrl={imageUrl} close={handleClose}></ModalGallery>
+      <ModalGallery _id={id} show={open} artist={artist} title={title} email={email} category={category} imageUrl={imageUrl} close={handleClose}></ModalGallery>
       }
     <div data-tag={i} key={i} className="galleryCard" onClick={handleShow}>
       <img

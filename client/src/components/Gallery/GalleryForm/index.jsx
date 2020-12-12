@@ -4,15 +4,20 @@ import { NotificationContext } from '../../shared/Notifications';
 import { UserContext } from '../../Authentication/UserProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
 import Axios from 'axios';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
  
-const GalleryForm = ({ endpoint }) => {
+const GalleryForm = ({ endpoint, preload }) => {
   const [inputs, setInputs] = useState();
+  
   const { setNotification } = useContext(NotificationContext);
   const { user } = useContext(UserContext);
   const { globalStore } = useContext(GlobalStoreContext);
  
-  const { id } = useParams();
+  useEffect(() => {
+    setInputs({...preload});
+    console.log(inputs);
+  }, [preload]);
+
   const handleChange = event => {
     event.persist();
     setInputs({
@@ -50,28 +55,28 @@ const GalleryForm = ({ endpoint }) => {
     <Form onSubmit={handleSubmit}>
       <Form.Group>
       <Form.Label>Artist's Name</Form.Label>
-      <Form.Control type="text" placeholder="Enter Name" name="artist" onChange={handleChange}/>
+      <Form.Control type="text" placeholder="Enter Name" name="artist" onChange={handleChange} defaultValue={inputs.artist}/>
       </Form.Group>
 
       <Form.Group >
       <Form.Label>Category</Form.Label>
-      <Form.Control type="text" placeholder="Category" name="category" onChange={handleChange}/>
+      <Form.Control type="text" placeholder="Category" name="category" onChange={handleChange} defaultValue={inputs.category}/>
       </Form.Group>
 
       <Form.Group >
       <Form.Label>Title</Form.Label>
-      <Form.Control type="text" placeholder="Title" name="title" onChange={handleChange}/>
+      <Form.Control type="text" placeholder="Title" name="title" onChange={handleChange} defaultValue={inputs.title}/>
       </Form.Group>
 
       <Form.Group >
       <Form.Label>Image</Form.Label>
-      <Form.Control type="text" placeholder="Image Url" name="imageUrl" onChange={handleChange}/>
+      <Form.Control type="text" placeholder="Image Url" name="imageUrl" onChange={handleChange} defaultValue={inputs.imageUrl}/>
       <small>Please enter url address where image can be located</small>
       </Form.Group>
 
       <Form.Group >
       <Form.Label>Email</Form.Label>
-      <Form.Control type="text" placeholder="Email address" name="email" onChange={handleChange}/>
+      <Form.Control type="text" placeholder="Email address" name="email" onChange={handleChange} defaultValue={inputs.email} />
       </Form.Group>
 
       <Button type="submit">Submit</Button>

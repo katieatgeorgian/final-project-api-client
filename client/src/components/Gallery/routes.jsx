@@ -4,7 +4,7 @@ import { UserContext } from '../Authentication/UserProvider';
 
 import Index from "./index";
 import New from "./New";
-// import Edit from "./Edit";
+import Edit from "./Edit";
 
 const Routes = () => {
   const { user } = useContext(UserContext);
@@ -15,7 +15,7 @@ const Routes = () => {
       {user && user.token ? (
         <>
           <Route exact path="/gallery/new" component={New}/>
-          {/* <Route exact path="/gallery/edit/:id" component={Edit}/> */}
+          <Route exact path="/gallery/edit/:id" component={Edit}/>
         </>
       ) : null}
     </Switch>

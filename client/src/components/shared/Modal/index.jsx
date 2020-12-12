@@ -1,23 +1,47 @@
+import React, { useContext } from 'react';
 import { Modal, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../Authentication/UserProvider';
+import Axios from 'axios';
+import { NotificationContext } from '../../shared/Notifications';
+import { GlobalStoreContext } from '../../shared/Globals';
 
 import './styles.css';
 
-const GalleryModal = ({close, show, artist, title, category, email, imageUrl}) => {
-
+const GalleryModal = ({close, show, artist, title, category, email, imageUrl, _id}) => {
+  const { user } = useContext(UserContext);
+  const { setNotification } = useContext(NotificationContext);
+  const { globalStore } = useContext(GlobalStoreContext);
+  
   const handleView = async event => {
     event.preventDefault();
     console.log("view")
   };
 
-  const handleEdit = async event => {
+  const handleDelete = event => {
     event.preventDefault();
-    console.log("edit")
-  };
-
-  const handleDelete = async event => {
-    event.preventDefault();
-    console.log("delete")
+    console.log(_id);
+ 
+    Axios.post(`${globalStore.REACT_APP_ENDPOINT}/gallery/destroy`, {
+      _id,  
+      secret_token: (user && user.token) 
+    })
+    .then(({ data }) => {
+      if (data) {
+        setNotification({
+          type: "success",
+          message: "Your listing was deleted"
+        });
+      }
+ 
+      // return <Redirect to="/gallery"/>;
+    })
+    .catch((error) => {
+      setNotification({
+        type: "danger",
+        message: `There was an error deleting your art: ${error.message}`
+      });
+    });
   };
 
   return (
@@ -38,8 +62,12 @@ const GalleryModal = ({close, show, artist, title, category, email, imageUrl}) =
 
           <div className="col-2 pl-3 d-flex flex-column">
             <button className="btn mb-2 view" onClick={handleView}>View</button>
-            <Link to="/profile/edit"><button className="btn edit mb-2" onClick={handleEdit}>Edit</button></Link>
-            <button className="btn delete mb-2" onClick={handleDelete}>Delete</button>
+            {user && user.token ? (
+              <>
+                <Link to={`/gallery/edit/${_id}`}><button className="btn edit mb-2">Edit</button></Link>
+                <button className="btn delete mb-2" onClick={handleDelete}>Delete</button>
+              </>
+            ) : null}
           </div>
 
           {/* <div className="col-3 pl-3">

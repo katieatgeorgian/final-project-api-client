@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useContext, useState } from 'react';
 import Axios from 'axios';
 import { GlobalStoreContext } from '../shared/Globals';
 import { NotificationContext } from '../shared/Notifications';
+import { UserContext } from '../Authentication/UserProvider';
+import { Link } from 'react-router-dom';
 
 import Styles from './styles';
 
@@ -22,6 +24,7 @@ const Gallery = (cat) => {
   const { globalStore } = useContext(GlobalStoreContext);
   const [artPieces, setArtPieces] = useState([]);
   const { setNotification } = useContext(NotificationContext);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     
@@ -35,20 +38,23 @@ const Gallery = (cat) => {
         message: "Couldn't access the art pieces at this time."
       });
     });
-  }, []);
+  }, [globalStore, setNotification]);
 
   return (
     <>
       <Styles.GalleryDiv>
         
         <div className="gallerySection">
-        {catAll ? 
+
+          {artPieces && artPieces.length > 0 ? (
+
+        catAll ? 
           Object.values(artPieces)
           .map((art, i) => {
           console.log(art);
             return (
               <Fragment key={i}>
-                <GalleryCard key={i} title={art.title} imageUrl={art.imageUrl} email={art.email} artist={art.artist} category={art.category} i={i}></GalleryCard>
+                <GalleryCard key={i} id={art._id} title={art.title} imageUrl={art.imageUrl} email={art.email} artist={art.artist} category={art.category} i={i}></GalleryCard>
               </Fragment>
             );
           })
@@ -61,10 +67,13 @@ const Gallery = (cat) => {
           console.log(art);
             return (
               <Fragment key={i}>
-                <GalleryCard key={i} title={art.title} imageUrl={art.imageUrl} email={art.email} artist={art.artist} category={art.category} i={i}></GalleryCard>
+                <GalleryCard key={i} id={art._id} title={art.title} imageUrl={art.imageUrl} email={art.email} artist={art.artist} category={art.category} i={i}></GalleryCard>
               </Fragment>
             );
           })
+          )
+          :
+          null
         }
         </div>
       </Styles.GalleryDiv>

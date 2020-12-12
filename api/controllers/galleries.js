@@ -81,6 +81,7 @@ exports.update = async (req, res, next) => {
 exports.destroy = async (req, res, next) => {
   try {
     const { id } = req.body;
+    console.log(id);
     const gallery = await Gallery.findOneAndDelete({ id });
     res.status(200).json(gallery);
   } catch (error) {
