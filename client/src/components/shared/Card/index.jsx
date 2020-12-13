@@ -25,7 +25,7 @@ const GalleryCard = ({title, imageUrl, i, artist, category, email, id}) => {
         alt={title}
         src={imageUrl}
       />
-      <h4 className="mt-1 font-italic">{title}</h4>
+      <h4 className="mt-1 font-italic" style={{color: "#560829"}}>{title}</h4>
     </div>
     </>
   );

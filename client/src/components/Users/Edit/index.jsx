@@ -31,7 +31,7 @@ const Edit = () => {
             <UserForm
               styles={{width: "100% !important"}}
               preloadData={ userDetails }
-              endpoint="/users/update"
+              endpoint="users/update"
               buttonLabel="Update"
             />
           </Styles.UserEditOverlay>

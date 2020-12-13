@@ -64,7 +64,7 @@ const UserForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
   return (
     redirect ? (
-      <Redirect to="/gallery"/>
+      <Redirect to="/login"/>
     ) : (
       <Form onSubmit={handleSubmit}>
 
