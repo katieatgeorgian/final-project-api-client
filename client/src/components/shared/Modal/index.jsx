@@ -14,10 +14,10 @@ const GalleryModal = ({close, show, artist, title, category, email, imageUrl, id
   const { globalStore } = useContext(GlobalStoreContext);
   const [redirect, setRedirect] = useState(false);
   
-  const handleView = async event => {
-    event.preventDefault();
-    console.log("view")
-  };
+  // const handleView = async event => {
+  //   event.preventDefault();
+  //   console.log("view")
+  // };
 
   const handleDelete = event => {
     event.preventDefault();
@@ -65,7 +65,7 @@ const GalleryModal = ({close, show, artist, title, category, email, imageUrl, id
           </div>
 
           <div className="col-2 pl-3 d-flex flex-column">
-            <button className="btn mb-2 view" onClick={handleView}>View</button>
+          <Link to={`/gallery/${id}`}><button className="btn mb-2 view">View</button></Link>
             {user && user.token ? (
               <>
                 <Link to={`/gallery/edit/${id}`}><button className="btn edit mb-2">Edit</button></Link>
