@@ -11,13 +11,13 @@ const GalleryCard = ({title, imageUrl, i, artist, category, email, id}) => {
   }
 
   const handleShow = (e) => {
-    const idx = e.target.attributes.getNamedItem('data-tag').value;;
-      setOpen(true);
+    setOpen(true);
+    console.log(id);
   }
   return (
     <>
     {open && 
-      <ModalGallery _id={id} show={open} artist={artist} title={title} email={email} category={category} imageUrl={imageUrl} close={handleClose}></ModalGallery>
+      <ModalGallery id={id} show={open} artist={artist} title={title} email={email} category={category} imageUrl={imageUrl} close={handleClose}></ModalGallery>
       }
     <div data-tag={i} key={i} className="galleryCard" onClick={handleShow}>
       <img
@@ -25,7 +25,7 @@ const GalleryCard = ({title, imageUrl, i, artist, category, email, id}) => {
         alt={title}
         src={imageUrl}
       />
-      <h4 className="mt-1">{title}</h4>
+      <h4 className="mt-1 font-italic">{title}</h4>
     </div>
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Styles from './styles';
 
 const Header = ({title, children}) => {
   useEffect(() => {
@@ -6,15 +7,15 @@ const Header = ({title, children}) => {
   });
 
   return (
-        <header style={{textAlign:"center", paddingTop: "2rem"}}>
-          <h1>{title || 'The Galleria'}</h1>
-          { children ? (
-            <>
-              <hr/>
-              { children }
-            </>
-          ) : null }
-        </header>
+    <Styles.Header>
+      <h1>{title || 'The Galleria'}</h1>
+      { children ? (
+        <>
+          <hr/>
+          { children }
+        </>
+      ) : null }
+    </Styles.Header>
   );
 }
  

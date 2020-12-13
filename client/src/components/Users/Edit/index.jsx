@@ -3,10 +3,12 @@ import React, { useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { UserContext } from '../../Authentication/UserProvider';
 import { Container } from 'react-bootstrap';
-import Header from '../../shared/Header';
 import UserForm from '../UserForm';
 
-import Layout from '../../shared/Layout';
+import Header from '../../shared/Header';
+import Layout from "../../shared/Layout";
+import Footer from '../../shared/Footer';
+import Styles from './styles';
 
 const Edit = () => {
   const { user } = useContext(UserContext);
@@ -20,20 +22,24 @@ const Edit = () => {
   }, []);
 
   return (
-    userDetails ? (
-      <>
-        <Header title="Edit your profile!"/>
-        
-        <Layout className="mt-3">
-
-          <UserForm
-            preloadData={ userDetails }
-            endpoint="/users/update"
-            buttonLabel="Update"
-          />
-        </Layout>
-      </>
-    ) : null
+    <>
+    {userDetails ? (
+      <Layout className="mt-3">
+        <Styles.UserEditDiv>
+          <Styles.UserEditOverlay>
+            <Header title="Edit Profile"></Header>
+            <UserForm
+              styles={{width: "100% !important"}}
+              preloadData={ userDetails }
+              endpoint="/users/update"
+              buttonLabel="Update"
+            />
+          </Styles.UserEditOverlay>
+        </Styles.UserEditDiv>
+      </Layout>
+    ) : null}
+    <Footer/>
+    </>
   );
 }
  

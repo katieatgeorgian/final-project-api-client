@@ -13,33 +13,13 @@ export default {
     
     a {
       color: #560829 !important;
-        text-decoration: none;
-        padding: 1em !important;
+      text-decoration: none;
+      padding: 1em !important;
         
         &:hover {
           color: #063b42 !important;
         }
     }
-/* 
-    ul {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0;
-    list-style: none;
-
-    li {
-      padding-top: 1rem;
-      
-      a{
-        color: #560829 !important;
-        text-decoration: none;
-        padding: 1em;
-        
-        &:hover {
-          color: #063b42;
-        }
-      }
-    } */
   }
   `
 };

@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Modal, Button } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { UserContext } from '../../Authentication/UserProvider';
 import Axios from 'axios';
 import { NotificationContext } from '../../shared/Notifications';
@@ -8,10 +8,11 @@ import { GlobalStoreContext } from '../../shared/Globals';
 
 import './styles.css';
 
-const GalleryModal = ({close, show, artist, title, category, email, imageUrl, _id}) => {
+const GalleryModal = ({close, show, artist, title, category, email, imageUrl, id}) => {
   const { user } = useContext(UserContext);
   const { setNotification } = useContext(NotificationContext);
   const { globalStore } = useContext(GlobalStoreContext);
+  const [redirect, setRedirect] = useState(false);
   
   const handleView = async event => {
     event.preventDefault();
@@ -20,10 +21,11 @@ const GalleryModal = ({close, show, artist, title, category, email, imageUrl, _i
 
   const handleDelete = event => {
     event.preventDefault();
-    console.log(_id);
- 
+    console.log(id);
+    const picId = event.target.id;
+
     Axios.post(`${globalStore.REACT_APP_ENDPOINT}/gallery/destroy`, {
-      _id,  
+      _id: picId,  
       secret_token: (user && user.token) 
     })
     .then(({ data }) => {
@@ -33,8 +35,9 @@ const GalleryModal = ({close, show, artist, title, category, email, imageUrl, _i
           message: "Your listing was deleted"
         });
       }
- 
-      // return <Redirect to="/gallery"/>;
+
+      setRedirect(true);
+  
     })
     .catch((error) => {
       setNotification({
@@ -44,6 +47,7 @@ const GalleryModal = ({close, show, artist, title, category, email, imageUrl, _i
     });
   };
 
+  if (redirect) return <Redirect to="gallery"/>
   return (
     <Modal show={show}
       size="xl"
@@ -52,7 +56,7 @@ const GalleryModal = ({close, show, artist, title, category, email, imageUrl, _i
       className={show === true ? "d-block" : "d-none"}
     >
       <Modal.Header closeButton onHide={close}>
-        <Modal.Title>Title: {title}</Modal.Title>
+        <Modal.Title className="font-italic">Title: {title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="row">
@@ -64,8 +68,8 @@ const GalleryModal = ({close, show, artist, title, category, email, imageUrl, _i
             <button className="btn mb-2 view" onClick={handleView}>View</button>
             {user && user.token ? (
               <>
-                <Link to={`/gallery/edit/${_id}`}><button className="btn edit mb-2">Edit</button></Link>
-                <button className="btn delete mb-2" onClick={handleDelete}>Delete</button>
+                <Link to={`/gallery/edit/${id}`}><button className="btn edit mb-2">Edit</button></Link>
+                <button className="btn delete mb-2" onClick={handleDelete} id={id}>Delete</button>
               </>
             ) : null}
           </div>

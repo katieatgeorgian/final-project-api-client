@@ -1,5 +1,5 @@
 import React, {useContext } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { UserContext } from '../Authentication/UserProvider';
 
 import Index from "./index";
@@ -17,7 +17,9 @@ const Routes = () => {
           <Route exact path="/gallery/new" component={New}/>
           <Route exact path="/gallery/edit/:id" component={Edit}/>
         </>
-      ) : null}
+      ) : 
+      null
+      }
     </Switch>
   );
 }

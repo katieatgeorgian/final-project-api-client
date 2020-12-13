@@ -7,9 +7,7 @@ import Logo from '../Logo';
 import Styles from './styles';
 
 const NavLink = (props) => {
-  // This function allows us to use React Router
-  // with React Bootstrap. Booooya
-    return (
+  return (
     <Nav.Link
       href={props.href}
       onClick={e => {

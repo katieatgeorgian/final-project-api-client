@@ -12,9 +12,11 @@ const New = () => {
     <>
       <Layout>
         <Styles.RegisterDiv>
-          <Header title="Register">
-          </Header>
-          <UserForm endpoint="users"/>
+          <Styles.RegisterOverlay>
+            <Header title="Register">
+            </Header>
+            <UserForm endpoint="users"/>
+          </Styles.RegisterOverlay>
         </Styles.RegisterDiv>
       </Layout>
       <Footer />

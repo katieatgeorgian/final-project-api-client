@@ -2,10 +2,12 @@ import React, { useEffect, useContext, useState } from 'react';
 import Axios from 'axios';
 import { GlobalStoreContext } from '../shared/Globals';
 import { NotificationContext } from '../shared/Notifications';
-import { Container, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import Header from '../shared/Header';
 
 import Layout from "../shared/Layout";
+import Footer from '../shared/Footer';
+import Styles from './styles';
 
 const Users = () => {
   const { globalStore } = useContext(GlobalStoreContext);
@@ -26,31 +28,37 @@ const Users = () => {
   }, [globalStore, setNotification]);
 
   return (
-    users ? (
-      <>
-        <Header title="Users">
-        </Header>
+    <>
+    {users ? (
         <Layout className="mt-3">
-          <Table>
-            <thead>
-              <tr>
-                <td>Name</td>
-                <td>Email</td>
-              </tr>
-            </thead>
+        
+          <Styles.UserDiv>
+            <Styles.UserOverlay>
+            <Header title="Users">
+        </Header>
+              <Table>
+                <thead>
+                  <tr>
+                    <td className="font-weight-bold">Name</td>
+                    <td className="font-weight-bold">Email</td>
+                  </tr>
+                </thead>
 
-            <tbody>
-              {users.map(({name, email}, i) => (
-                <tr>
-                  <td>{name}</td>
-                  <td>{email}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+                <tbody>
+                  {users.map(({name, email}, i) => (
+                    <tr key={i}>
+                      <td>{name}</td>
+                      <td>{email}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+              </Styles.UserOverlay>
+            </Styles.UserDiv>
         </Layout>
-      </>
-    ) : null
+    ) : null }
+    <Footer/>
+    </>
   );
 }
  

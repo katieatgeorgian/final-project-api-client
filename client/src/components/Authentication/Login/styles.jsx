@@ -2,10 +2,19 @@ import styled from 'styled-components';
 
 export default {
   LoginDiv: styled.div`
-    min-height: 90vh;
-    /* display:flex; */
     margin: 0 auto;
-    width: 100%;
-    margin-left: 13rem;
+    min-height: 100vh;
+    display: flex;
+    padding-left: 13vw;
   `,
+
+  LoginOverlay: styled.div`
+    background-color: rgba(255,255,255,0.8);
+    color: #063b42;
+    /* margin-left: 13vw; */
+    margin-top: 5%;
+    padding-bottom: 10%;
+    height: 75%;
+    padding: 5rem;
+  `
 };

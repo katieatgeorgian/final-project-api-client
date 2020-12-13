@@ -57,9 +57,14 @@ const UserForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
     }
   };
 
+  const handleCancel = event => {
+    event.preventDefault();
+    setRedirect(true);
+  }
+
   return (
     redirect ? (
-      <Redirect to="/Home"/>
+      <Redirect to="/gallery"/>
     ) : (
       <Form onSubmit={handleSubmit}>
 
@@ -115,7 +120,8 @@ const UserForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
           />
         </Form.Group>
   
-        <Form.Group>
+        <Form.Group style={{display: "flex", justifyContent: "space-between"}}>
+          <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
           <Button type="submit">{ buttonLabel || "Register" }</Button>
         </Form.Group>
       </Form>

@@ -4,10 +4,12 @@ import { useEffect } from 'react';
 import { UserContext } from '../../Authentication/UserProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
 import { Container, Media } from 'react-bootstrap';
-import Header from '../../shared/Header';
 import { Link } from 'react-router-dom';
 
+import Header from '../../shared/Header';
 import Layout from "../../shared/Layout";
+import Footer from '../../shared/Footer';
+import Styles from './styles';
 
 const Show = () => {
   const { user } = useContext(UserContext);
@@ -23,12 +25,15 @@ const Show = () => {
   }, []);
 
   return (
-    userDetails ? (
-      <div style={{marginLeft: "13rem"}}>
-        <Header title="Profile">
-        </Header>
-
+    <>
+    {userDetails ? (
+      <>
         <Layout className="mt-3">
+        
+          <Styles.UserShowDiv>
+            <Styles.UserShowOverlay>
+
+        <Header title="Profile"></Header>
           <Media>
             <img
               src="https://via.placeholder.com/150"
@@ -51,9 +56,13 @@ const Show = () => {
               </p>
             </Media.Body>
           </Media>
+          </Styles.UserShowOverlay>
+          </Styles.UserShowDiv>
         </Layout>
-      </div>
-    ) : null
+        </>
+    ) : null}
+    <Footer/>
+    </>
   );
 }
  

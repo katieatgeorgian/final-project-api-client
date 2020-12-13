@@ -38,44 +38,44 @@ const Gallery = (cat) => {
         message: "Couldn't access the art pieces at this time."
       });
     });
-  }, [globalStore, setNotification]);
+  }, [globalStore]);
 
   return (
     <>
       <Styles.GalleryDiv>
-        
+
         <div className="gallerySection">
 
           {artPieces && artPieces.length > 0 ? (
 
-        catAll ? 
-          Object.values(artPieces)
-          .map((art, i) => {
-          console.log(art);
-            return (
-              <Fragment key={i}>
+            catAll ? 
+              Object.values(artPieces)
+              .map((art, i) => {
+              console.log(art);
+                return (
+                <Fragment key={i}>
                 <GalleryCard key={i} id={art._id} title={art.title} imageUrl={art.imageUrl} email={art.email} artist={art.artist} category={art.category} i={i}></GalleryCard>
-              </Fragment>
-            );
-          })
+                </Fragment>
+                );
+              })
 
-          :
-          
-          Object.values(artPieces)
-          .filter(i => i.category === cat.cat)
-          .map((art, i) => {
-          console.log(art);
-            return (
-              <Fragment key={i}>
+            :
+
+              Object.values(artPieces)
+              .filter(i => i.category === cat.cat)
+              .map((art, i) => {
+              console.log(art);
+                return (
+                <Fragment key={i}>
                 <GalleryCard key={i} id={art._id} title={art.title} imageUrl={art.imageUrl} email={art.email} artist={art.artist} category={art.category} i={i}></GalleryCard>
-              </Fragment>
-            );
-          })
+                </Fragment>
+              );
+            })
           )
-          :
-          null
+        :
+          <p>No art pieces to show</p>
         }
-        </div>
+      </div>
       </Styles.GalleryDiv>
     </>
   );

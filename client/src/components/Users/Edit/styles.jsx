@@ -1,20 +1,18 @@
 import styled from 'styled-components';
 
 export default {
-  RegisterDiv: styled.div`
+  UserEditDiv: styled.div`
     margin: 0 auto;
-    min-height: 150vh;
+    min-height: 90vh;
     display: flex;
     padding-left: 13vw;
   `,
 
-  RegisterOverlay: styled.div`
+  UserEditOverlay: styled.div`
     background-color: rgba(255,255,255,0.8);
     color: #063b42;
-    /* margin-left: 13vw; */
-    margin-top: 5%;
-    padding-bottom: 10%;
-    height: 75%;
-    padding: 5rem;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 5rem 7rem 5rem 7rem;
   `
 };

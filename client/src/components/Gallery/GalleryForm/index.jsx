@@ -5,18 +5,19 @@ import { UserContext } from '../../Authentication/UserProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
 import Axios from 'axios';
 import { Redirect } from 'react-router-dom';
+
+import './styles.css';
  
 const GalleryForm = ({ endpoint, preload }) => {
-  const [inputs, setInputs] = useState();
-  
+  const [inputs, setInputs] = useState({});
+  const [redirect, setRedirect] = useState(false);
   const { setNotification } = useContext(NotificationContext);
   const { user } = useContext(UserContext);
   const { globalStore } = useContext(GlobalStoreContext);
  
   useEffect(() => {
     setInputs({...preload});
-    console.log(inputs);
-  }, [preload]);
+  }, [preload])
 
   const handleChange = event => {
     event.persist();
@@ -24,11 +25,14 @@ const GalleryForm = ({ endpoint, preload }) => {
       ...inputs,
       [event.target.name]: event.target.value
     });
+    console.log(inputs);
   };
- 
+  console.log(user.token);
+  console.log(user);
   const handleSubmit = event => {
     event.preventDefault();
- 
+    console.log(inputs);
+    
     Axios.post(`${globalStore.REACT_APP_ENDPOINT}/${endpoint}`, {
       ...inputs,
       secret_token: (user && user.token)
@@ -37,11 +41,11 @@ const GalleryForm = ({ endpoint, preload }) => {
       if (data) {
         setNotification({
           type: "success",
-          message: "Your art was added to the gallery successfully"
+          message: `Success`
         });
       }
  
-      return <Redirect to="/gallery"/>;
+     setRedirect(true);
     })
     .catch((error) => {
       setNotification({
@@ -50,37 +54,57 @@ const GalleryForm = ({ endpoint, preload }) => {
       });
     });
   };
+
+  // const handleCancel = event => {
+  //   event.preventDefault();
+  //   setRedirect(true);
+  // }
  
+  if(redirect) return <Redirect to="/gallery"/>;
+  
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-      <Form.Label>Artist's Name</Form.Label>
-      <Form.Control type="text" placeholder="Enter Name" name="artist" onChange={handleChange} defaultValue={inputs.artist}/>
+        <Form.Label>Artist's Name</Form.Label>
+        <Form.Control type="text" placeholder="Enter Name" name="artist" onChange={handleChange} defaultValue={inputs.artist}/>
+      </Form.Group>
+
+      <Form.Group className="mt-2" >
+        <Form.Label>Category</Form.Label><br/>
+        {/* <Form.Control type="text" placeholder="Category" name="category" onChange={handleChange} defaultValue={inputs.category}/> */}
+        <select id="category" name="category" onChange={handleChange} value={inputs.category}>
+          <option value="null">Category</option>
+          <option value="photography">Photography</option>
+          <option value="pottery">Pottery</option> 
+          <option value="painting">Painting</option>
+          <option value="drawing/sketching">Drawing/Sketching</option>
+          <option value="sculpture">Sculpture</option>
+          <option value="other">Other</option>
+        </select> 
+      
+      </Form.Group>
+      
+      <Form.Group >
+        <Form.Label>Title</Form.Label>
+        <Form.Control type="text" placeholder="Title" name="title" onChange={handleChange} defaultValue={inputs.title}/>
       </Form.Group>
 
       <Form.Group >
-      <Form.Label>Category</Form.Label>
-      <Form.Control type="text" placeholder="Category" name="category" onChange={handleChange} defaultValue={inputs.category}/>
+        <Form.Label>Image</Form.Label>
+        <Form.Control type="text" placeholder="Image Url" name="imageUrl" onChange={handleChange} defaultValue={inputs.imageUrl}/>
+        <small>Please enter url address where image can be located</small>
       </Form.Group>
 
       <Form.Group >
-      <Form.Label>Title</Form.Label>
-      <Form.Control type="text" placeholder="Title" name="title" onChange={handleChange} defaultValue={inputs.title}/>
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="text" placeholder="Email address" name="email" onChange={handleChange} defaultValue={inputs.email} />
       </Form.Group>
 
-      <Form.Group >
-      <Form.Label>Image</Form.Label>
-      <Form.Control type="text" placeholder="Image Url" name="imageUrl" onChange={handleChange} defaultValue={inputs.imageUrl}/>
-      <small>Please enter url address where image can be located</small>
-      </Form.Group>
-
-      <Form.Group >
-      <Form.Label>Email</Form.Label>
-      <Form.Control type="text" placeholder="Email address" name="email" onChange={handleChange} defaultValue={inputs.email} />
-      </Form.Group>
-
-      <Button type="submit">Submit</Button>
-    </Form>
+      <div style={{display: "flex", justifyContent: "space-between"}}>
+        {/* <Button variant="secondary" onClick={handleCancel}>Cancel</Button> */}
+        <Button type="submit">Submit</Button>
+      </div>
+    </Form>  
   );
 }
 

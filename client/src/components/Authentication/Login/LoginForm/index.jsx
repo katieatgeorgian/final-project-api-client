@@ -4,14 +4,14 @@ import { UserContext } from '../../UserProvider';
 import { NotificationContext } from '../../../shared/Notifications';
 import { GlobalStoreContext } from '../../../shared/Globals';
 import Axios from 'axios';
-
-import './styles.css';
+import { Redirect } from 'react-router-dom';
 
 const LoginForm = () => {
   const { setUser } = useContext(UserContext);
   const { setNotification } = useContext(NotificationContext);
   const { globalStore } = useContext(GlobalStoreContext);
   const [inputs, setInputs] = useState({});
+  const [redirect, setRedirect] = useState(false);
   
   const handleChange = event => {
     event.persist();
@@ -55,6 +55,13 @@ const LoginForm = () => {
     }
   };
 
+  const handleCancel = event => {
+    event.preventDefault();
+    setRedirect(true);
+  }
+ 
+  if(redirect) return <Redirect to="/gallery"/>;
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
@@ -74,10 +81,12 @@ const LoginForm = () => {
         />
       </Form.Group>
 
-      <Form.Group>
+      <Form.Group style={{display: "flex", justifyContent: "space-between"}}>
+        <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
         <Button type="submit" className="btn pl-3 pr-3">Submit</Button>
       </Form.Group>
     </Form>
+
   );
 }
  

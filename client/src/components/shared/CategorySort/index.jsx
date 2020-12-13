@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-// import { Dropdown } from "react-bootstrap";
-
 import './styles.css';
 import Gallery from '../../Gallery';
 import { Link } from 'react-router-dom';
@@ -23,6 +21,8 @@ const CategorySort = () => {
           <option value="photography">Photography</option>
           <option value="pottery">Pottery</option> 
           <option value="painting">Painting</option>
+          <option value="drawing/sketching">Drawing/Sketching</option>
+          <option value="sculpture">Sculpture</option>
           <option value="other">Other</option>
         </select> 
       </div>

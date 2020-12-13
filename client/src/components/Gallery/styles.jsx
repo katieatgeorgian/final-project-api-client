@@ -9,10 +9,6 @@ export default {
       display:flex;
       flex-wrap: wrap;
     }
-    /* div.card {
-      width: 39% !important;
-      margin: 1rem;
-    } */
 
 
     /* Cards */
@@ -34,15 +30,6 @@ export default {
   /* width: 75%; */
   height: auto;
 }
-
-/* .flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-} */
 
   `,
 };

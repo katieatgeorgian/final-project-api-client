@@ -3,7 +3,6 @@ const passport = require('passport');
 
 module.exports = (router) => {
   router.get('/gallery', index);
-  // router.get('/gallery/show', passport.authenticate('jwt', { session: false }), show);
   router.get('/gallery/:id', show);
   router.post('/gallery', passport.authenticate('jwt', { session: false }), create);
   router.post('/gallery/update', passport.authenticate('jwt', { session: false }), update);

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default {
   ContactDiv: styled.div`
-    min-height: 100vh;
+    min-height: 115vh;
     display: flex;
     margin: 0 auto;
     

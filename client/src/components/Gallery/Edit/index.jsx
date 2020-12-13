@@ -5,12 +5,15 @@ import Axios from 'axios';
 import { GlobalStoreContext } from '../../shared/Globals';
 import { NotificationContext } from '../../shared/Notifications';
 
+import Layout from '../../shared/Layout';
+import Styles from './styles';
 import Header from '../../shared/Header';
+import Footer from '../../shared/Footer';
 import GalleryForm from "../GalleryForm";
  
 const Edit = () => {
   const { id } = useParams();
-  const [preload, setPreload ] = useState({});
+  const [preload, setPreload] = useState();
   const { globalStore } = useContext(GlobalStoreContext);
   const { setNotification } = useContext(NotificationContext);
 
@@ -22,19 +25,23 @@ const Edit = () => {
     .catch(error => {
       setNotification({
         type: "danger",
-        message: `There was an error retrieving the quote: ${error.message}`
+        message: `There was an error retrieving the listing: ${error.message}`
       });
     });
-  }, [globalStore, id, setNotification]);
+  }, []);
 
   return (
     <>
-      <Header title="Edit your Listing" />
- 
-      <Container>
-
-        <GalleryForm endpoint="gallery/update" preload={preload}/>
-      </Container>
+      <Layout>
+        <Styles.NewDiv>
+          <Styles.NewOverlay>
+            <Header title="Update a New Listing">
+            </Header>
+            <GalleryForm endpoint="gallery/update" preload={preload}/>
+          </Styles.NewOverlay>
+        </Styles.NewDiv>
+      </Layout>
+      <Footer />
     </>
   );
 }

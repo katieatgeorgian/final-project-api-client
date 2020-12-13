@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export default {
   AboutDiv: styled.div`
     margin: 0 auto;
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
   `,
 

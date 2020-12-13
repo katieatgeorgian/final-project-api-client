@@ -1,5 +1,9 @@
-form {
-  width: 50%;
-  padding-top: 2rem;
-  margin: 0 auto;
+.btn.btn-primary {
+ background-color: #560829 !important;
+ border-color: #560829 !important;
 }
+
+.btn.btn-primary:hover {
+  background-color: #420720 !important;
+  border-color: #420720 !important;
+ }

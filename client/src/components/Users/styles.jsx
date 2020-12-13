@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export default {
-  RegisterDiv: styled.div`
+  UserDiv: styled.div`
     margin: 0 auto;
-    min-height: 150vh;
+    min-height: 100vh;
     display: flex;
     padding-left: 13vw;
   `,
 
-  RegisterOverlay: styled.div`
+  UserOverlay: styled.div`
     background-color: rgba(255,255,255,0.8);
     color: #063b42;
     /* margin-left: 13vw; */
