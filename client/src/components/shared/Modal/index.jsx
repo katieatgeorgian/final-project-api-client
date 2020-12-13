@@ -8,7 +8,7 @@ import { GlobalStoreContext } from '../../shared/Globals';
 
 import './styles.css';
 
-const GalleryModal = ({close, show, artist, title, category, email, imageUrl, id}) => {
+const GalleryModal = ({close, show, firstName, lastName, title, category, email, imageUrl, id}) => {
   const { user } = useContext(UserContext);
   const { setNotification } = useContext(NotificationContext);
   const { globalStore } = useContext(GlobalStoreContext);

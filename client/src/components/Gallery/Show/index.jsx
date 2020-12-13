@@ -44,7 +44,7 @@ console.log(artPiece);
               </div>
 
                <div className="col-5 pl-3">
-                <h6>Artist:</h6><h5>{artPiece.artist}</h5>
+                <h6>Artist:</h6><h5>{artPiece.firstName} {artPiece.lastName}</h5>
                 <h6>Category: {artPiece.category}</h6>
                 {user && user.token ? (
                   <h6><a href={`mailto:${artPiece.email}`}>Contact Artist</a></h6>

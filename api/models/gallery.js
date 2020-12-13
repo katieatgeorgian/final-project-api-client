@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const GallerySchema = new mongoose.Schema({
-  artist: {
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
     type: String,
     required: true
   },

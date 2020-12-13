@@ -64,8 +64,13 @@ const GalleryForm = ({ endpoint, preload }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label>Artist's Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter Name" name="artist" onChange={handleChange} defaultValue={inputs.artist}/>
+        <Form.Label>Artist's First Name</Form.Label>
+        <Form.Control type="text" placeholder="Enter First Name" name="firstName" onChange={handleChange} defaultValue={inputs.firstName}/>
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Artist's Last Name</Form.Label>
+        <Form.Control type="text" placeholder="Enter Last Name" name="lastName" onChange={handleChange} defaultValue={inputs.lastName}/>
       </Form.Group>
 
       <Form.Group className="mt-2" >

@@ -54,7 +54,7 @@ const Gallery = (cat) => {
               console.log(art);
                 return (
                 <Fragment key={i}>
-                <GalleryCard key={i} id={art._id} title={art.title} imageUrl={art.imageUrl} email={art.email} artist={art.artist} category={art.category} i={i}></GalleryCard>
+                <GalleryCard key={i} id={art._id} title={art.title} imageUrl={art.imageUrl} email={art.email} firstName={art.firstName} lastName={art.lastName} category={art.category} i={i}></GalleryCard>
                 </Fragment>
                 );
               })
@@ -67,7 +67,7 @@ const Gallery = (cat) => {
               console.log(art);
                 return (
                 <Fragment key={i}>
-                <GalleryCard key={i} id={art._id} title={art.title} imageUrl={art.imageUrl} email={art.email} artist={art.artist} category={art.category} i={i}></GalleryCard>
+                <GalleryCard key={i} id={art._id} title={art.title} imageUrl={art.imageUrl} email={art.email} firstName={art.firstName} lastName={art.lastName} category={art.category} i={i}></GalleryCard>
                 </Fragment>
               );
             })

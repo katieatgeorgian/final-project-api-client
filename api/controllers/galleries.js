@@ -26,7 +26,8 @@ exports.show = async (req, res, next) => {
 exports.create = async (req, res, next) => {
   try {
     const { 
-      artist,
+      firstName,
+      lastName,
       category,
       title,
       imageUrl,
@@ -34,7 +35,8 @@ exports.create = async (req, res, next) => {
     } = req.body;
     //creating data - same data as in model - one to one
     const gallery = await Gallery.create({
-      artist,
+      firstName,
+      lastName,
       category,
       title,
       imageUrl,
@@ -53,7 +55,8 @@ exports.update = async (req, res, next) => {
   try {
     const { 
       _id,
-      artist,
+      firstName,
+      lastName,
       category,
       title,
       imageUrl,
@@ -63,7 +66,8 @@ exports.update = async (req, res, next) => {
      //
     const gallery = await Gallery.findOneAndUpdate({_id: _id}, 
       {
-       artist,
+       firstName,
+       lastName,
        category,
        title,
        imageUrl,
