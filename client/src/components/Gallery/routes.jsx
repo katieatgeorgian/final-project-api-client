@@ -11,16 +11,20 @@ const Routes = () => {
   const { user } = useContext(UserContext);
   return (
     <Switch>
-      <Route exact path="/gallery" component={Index}/>
-      <Route exact path="/gallery/:id" component={Show}/>
-      {user && user.token ? (
+
+    {user && user.token ? (
         <>
           <Route exact path="/gallery/new" component={New}/>
+          <Route exact path="/gallery" component={Index}/>
+          <Route exact path="/gallery/:id" component={Show}/>
           <Route exact path="/gallery/edit/:id" component={Edit}/>
         </>
       ) : 
-      null
-      }
+        <>
+          <Route exact path="/gallery" component={Index}/>
+          <Route exact path="/gallery/:id" component={Show}/>
+        </>
+      }      
     </Switch>
   );
 }

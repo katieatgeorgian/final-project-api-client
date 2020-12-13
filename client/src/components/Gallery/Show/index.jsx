@@ -12,11 +12,11 @@ import Footer from '../../shared/Footer';
 const Show = (cat) => {
 
   const { globalStore } = useContext(GlobalStoreContext);
-  const [artPiece, setArtPiece] = useState([]);
+  const [artPiece, setArtPiece] = useState({});
   const { setNotification } = useContext(NotificationContext);
   const { user } = useContext(UserContext);
   const { id } = useParams();
-
+console.log(id);
   useEffect(() => {
     Axios.get(`${globalStore.REACT_APP_ENDPOINT}/gallery/${id}`)
     .then(({ data }) => setArtPiece(data))
@@ -48,7 +48,9 @@ console.log(artPiece);
                 <h6>Category: {artPiece.category}</h6>
                 {user && user.token ? (
                   <h6><a href={`mailto:${artPiece.email}`}>Contact Artist</a></h6>
-                ) : null}
+                ) : 
+                  <p><small>Register or Login to see contact information</small></p>
+                }
               </div>
             </div> 
             </>

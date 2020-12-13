@@ -27,8 +27,7 @@ const GalleryForm = ({ endpoint, preload }) => {
     });
     console.log(inputs);
   };
-  console.log(user.token);
-  console.log(user);
+
   const handleSubmit = event => {
     event.preventDefault();
     console.log(inputs);
@@ -55,10 +54,10 @@ const GalleryForm = ({ endpoint, preload }) => {
     });
   };
 
-  // const handleCancel = event => {
-  //   event.preventDefault();
-  //   setRedirect(true);
-  // }
+  const handleCancel = event => {
+    event.preventDefault();
+    setRedirect(true);
+  }
  
   if(redirect) return <Redirect to="/gallery"/>;
   
@@ -101,7 +100,7 @@ const GalleryForm = ({ endpoint, preload }) => {
       </Form.Group>
 
       <div style={{display: "flex", justifyContent: "space-between"}}>
-        {/* <Button variant="secondary" onClick={handleCancel}>Cancel</Button> */}
+        <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
         <Button type="submit">Submit</Button>
       </div>
     </Form>  

@@ -66,13 +66,14 @@ const GalleryModal = ({close, show, artist, title, category, email, imageUrl, id
 
           <div className="col-2 pl-3 d-flex flex-column">
           <Link to={`/gallery/${id}`}><button className="btn mb-2 view">View</button></Link>
-            {user && user.token ? (
-              <>
-                <Link to={`/gallery/edit/${id}`}><button className="btn edit mb-2">Edit</button></Link>
-                <button className="btn delete mb-2" onClick={handleDelete} id={id}>Delete</button>
-              </>
-            ) : null}
-          </div>
+
+          {user && user.token ? (
+            <>
+              <Link to={`/gallery/edit/${id}`}><button className="btn edit mb-2">Edit</button></Link>
+              <button className="btn delete mb-2" onClick={handleDelete} id={id}>Delete</button>
+            </>
+          ) : null}
+        </div>
 
           {/* <div className="col-3 pl-3">
             <h6>Artist:</h6><h5>{artist}</h5>

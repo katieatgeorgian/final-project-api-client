@@ -13,7 +13,7 @@ import GalleryForm from "../GalleryForm";
  
 const Edit = () => {
   const { id } = useParams();
-  const [preload, setPreload] = useState();
+  const [preload, setPreload] = useState({});
   const { globalStore } = useContext(GlobalStoreContext);
   const { setNotification } = useContext(NotificationContext);
 
@@ -35,7 +35,7 @@ const Edit = () => {
       <Layout>
         <Styles.NewDiv>
           <Styles.NewOverlay>
-            <Header title="Update a New Listing">
+            <Header title="Update a Listing">
             </Header>
             <GalleryForm endpoint="gallery/update" preload={preload}/>
           </Styles.NewOverlay>

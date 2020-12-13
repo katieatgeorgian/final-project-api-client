@@ -1,6 +1,27 @@
 const Gallery = require('../models/gallery');
 const jwt = require('jsonwebtoken');
 
+//show all art pieces
+exports.index = async (req, res, next) => {
+  try {
+    const galleries = await Gallery.find();
+    res.status(200).json(galleries);
+  } catch(error) {
+    next(error);
+  }
+};
+
+//show one specific piece
+exports.show = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const gallery = await Gallery.findById(id);
+    res.status(200).json(gallery);
+  } catch (error) {
+    next(error);
+  }
+};
+
 //create new art
 exports.create = async (req, res, next) => {
   try {
@@ -23,27 +44,6 @@ exports.create = async (req, res, next) => {
     //do a response - passing message, and in this case passing quote back (so have id)
     res.status(200).json(gallery)
   } catch(error) {
-    next(error);
-  }
-};
-
-//show all art pieces
-exports.index = async (req, res, next) => {
-  try {
-    const galleries = await Gallery.find();
-    res.status(200).json(galleries);
-  } catch(error) {
-    next(error);
-  }
-};
-
-//show one specific piece
-exports.show = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const gallery = await Gallery.findById(id);
-    res.status(200).json(gallery);
-  } catch (error) {
     next(error);
   }
 };
@@ -80,9 +80,10 @@ exports.update = async (req, res, next) => {
 //delete
 exports.destroy = async (req, res, next) => {
   try {
-    const { id } = req.body;
-    console.log(id);
-    const gallery = await Gallery.findOneAndDelete({ id });
+    console.log(req.body);
+    const { _id } = req.body;
+    console.log(_id);
+    const gallery = await Gallery.findOneAndDelete({ _id });
     res.status(200).json(gallery);
   } catch (error) {
     console.error(error);
