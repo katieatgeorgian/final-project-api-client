@@ -11,16 +11,6 @@ exports.index = async (req, res, next) => {
   }
 };
 
-//show one specific piece
-exports.show = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const gallery = await Gallery.findById(id);
-    res.status(200).json(gallery);
-  } catch (error) {
-    next(error);
-  }
-};
 
 //create new art
 exports.create = async (req, res, next) => {
@@ -91,6 +81,17 @@ exports.destroy = async (req, res, next) => {
     res.status(200).json(gallery);
   } catch (error) {
     console.error(error);
+    next(error);
+  }
+};
+
+//show one specific piece
+exports.show = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const gallery = await Gallery.findById(id);
+    res.status(200).json(gallery);
+  } catch (error) {
     next(error);
   }
 };
